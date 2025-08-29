@@ -1,26 +1,247 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Custom Font Declarations - Coconat Font Family */
+
+/* Regular Weight (400) */
+@font-face {
+  font-family: 'Coconat';
+  src: url('/fonts/Coconat-Regular.woff2') format('woff2'),
+       url('/fonts/Coconat-Regular.woff') format('woff'),
+       url('/fonts/Coconat-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Bold Extended Weight (700) */
+@font-face {
+  font-family: 'Coconat';
+  src: url('/fonts/Coconat-BoldExt.woff2') format('woff2'),
+       url('/fonts/Coconat-BoldExt.woff') format('woff'),
+       url('/fonts/Coconat-BoldExt.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Coconat', sans-serif;
+  font-weight: 400; /* Default to regular weight */
+  font-style: normal; /* Explicitly set default style to regular */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Font Weight Utility Classes */
+.font-regular {
+  font-weight: 400;
+  font-style: normal;
+}
+
+.font-bold {
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Typography Utility Classes */
+.font-coconat {
+  font-family: 'Coconat', sans-serif;
+}
+
+/* Example Usage Classes */
+.heading-regular {
+  font-family: 'Coconat', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.body-regular {
+  font-family: 'Coconat', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.heading-bold {
+  font-family: 'Coconat', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Legacy class mapping for backward compatibility */
+.font-extralight,
+.font-light,
+.font-medium,
+.font-semibold {
+  font-weight: 400; /* Fallback to regular since these weights aren't available */
+  font-style: normal;
+}
+
+.font-bold-italic,
+.font-semibold-italic,
+.font-medium-italic,
+.font-regular-italic,
+.font-light-italic,
+.font-extralight-italic {
+  font-weight: 400; /* Fallback to regular since italic isn't available */
+  font-style: normal;
+}
+
+.heading-extralight,
+.heading-light,
+.body-medium,
+.heading-semibold {
+  font-family: 'Coconat', sans-serif;
+  font-weight: 400; /* Fallback to regular */
+  font-style: normal;
+}
+
+/* Dropdown Animations */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(15px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.4s ease-out forwards;
+}
+
+/* Navigation Specific Styles */
+.navbar-container {
+  overflow: visible !important;
+  position: relative;
+}
+
+.nav-dropdown-trigger {
+  position: relative;
+}
+
+.nav-dropdown-trigger:hover .nav-dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Ensure proper hover states */
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1 !important;
+}
+
+.group:hover .group-hover\:visible {
+  visibility: visible !important;
+}
+
+.group:hover .group-hover\:pointer-events-auto {
+  pointer-events: auto !important;
+}
+
+/* Full width dropdown utilities */
+.dropdown-full-width {
+  width: 100vw !important;
+  max-width: none !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+/* Smooth scrollbar for any scrollable dropdown content */
+.dropdown-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.dropdown-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dropdown-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+.dropdown-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Prevent layout shift from dropdown content */
+.main-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure dropdowns don't affect page layout */
+.navigation-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 50;
+}
+
+/* Backdrop blur support */
+@supports (backdrop-filter: blur(10px)) {
+  .backdrop-blur-navbar {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .nav-link {
+    text-shadow: none;
+  }
+  
+  .dropdown-container {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up {
+    animation: none;
+  }
+  
+  .transition-all,
+  .transition-colors,
+  .transition-transform,
+  .transition-opacity {
+    transition: none;
+  }
+}
+
+/* Focus styles for accessibility */
+.nav-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Print styles */
+@media print {
+  .dropdown-container {
+    display: none;
+  }
+  
+  .navbar-container {
+    position: static;
+    background: white !important;
+    color: black !important;
+  }
 }

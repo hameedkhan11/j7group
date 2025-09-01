@@ -28,7 +28,7 @@ interface FloorPlan {
   floors: string;
 }
 
-const BackgroundComponent: React.FC = () => {
+const BuildingShowcase: React.FC = () => {
   const [showFloorPlan, setShowFloorPlan] = useState(false);
   const [selectedUnit, setSelectedUnit] = useState<UnitType>('Studio');
   const [selectedFloor, setSelectedFloor] = useState<string>('');
@@ -208,4 +208,4 @@ const BackgroundComponent: React.FC = () => {
   );
 };
 
-export default BackgroundComponent;
+export default BuildingShowcase;

@@ -31,7 +31,7 @@ const DropdownContent: React.FC<DropdownContentProps> = ({
     <div 
       className={`absolute top-full left-0 right-0 backdrop-blur-xl shadow-2xl transition-colors duration-500 ${
         isScrolled 
-          ? 'bg-white/95 border-b border-gray-200' 
+          ? 'bg-[#51301F] border-b border-gray-200' 
           :' border-b border-gray-100'
       }`}
       onMouseEnter={onMouseEnter}

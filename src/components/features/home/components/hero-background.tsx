@@ -66,7 +66,7 @@ export const HeroBackground: React.FC<HeroBackgroundProps> = ({
     // Default overlay classes
     switch (overlay) {
       case "light":
-        return "bg-black/10";
+        return "";
       case "medium":
         return "bg-black/40";
       case "dark":

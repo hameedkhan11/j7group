@@ -7,7 +7,7 @@ import DropdownContent from '@/components/features/home/components/DropdownConte
 import DropdownNavItem from '@/components/features/home/components/DropdownNavItem';
 import Logo from '@/components/features/home/components/Logo';
 import NavLink from '@/components/features/home/components/NavLink';
-import { aboutSections, developments } from '@/lib/data/navbar';
+import { aboutSections, developments, mediaCenter } from '@/lib/data/navbar';
 import { DropdownType } from '@/lib/navbar/types';
 
 const RangeNavbar: React.FC = () => {
@@ -77,9 +77,18 @@ const RangeNavbar: React.FC = () => {
                 onMouseLeave={handleDropdownLeave}
               />
 
+              {/* Media Center Dropdown */}
+              <DropdownNavItem
+                label="Media Center"
+                isActive={activeDropdown === 'media'}
+                type="media"
+                isScrolled={isScrolled}
+                onMouseEnter={() => handleDropdownEnter('media')}
+                onMouseLeave={handleDropdownLeave}
+              />
+
               {/* Regular Nav Items */}
               <NavLink href="#" isScrolled={isScrolled}>Luxury Villas</NavLink>
-              <NavLink href="#" isScrolled={isScrolled}>Media Centre</NavLink>
             </div>
 
             {/* CTA Button */}
@@ -104,6 +113,16 @@ const RangeNavbar: React.FC = () => {
           sections={developments}
           isScrolled={isScrolled}
           onMouseEnter={() => handleDropdownEnter('developments')}
+          onMouseLeave={handleDropdownLeave}
+        />
+
+        {/* Media Center Dropdown Content */}
+        <DropdownContent
+          isVisible={activeDropdown === 'media'}
+          type="media"
+          sections={mediaCenter}
+          isScrolled={isScrolled}
+          onMouseEnter={() => handleDropdownEnter('media')}
           onMouseLeave={handleDropdownLeave}
         />
       </nav>

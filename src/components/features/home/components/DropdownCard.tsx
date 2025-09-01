@@ -27,9 +27,9 @@ const DropdownCard: React.FC<DropdownCardProps> = ({
           crop="fill"
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+        <div className="absolute inset-0 bg-black/10"></div>
         <div className="absolute bottom-6 left-6 right-6">
-          <p className="text-white/60 text-xs uppercase tracking-wider mb-2">
+          <p className="text-white/90 text-xs uppercase tracking-wider mb-2">
             {section.category}
           </p>
           <h3 className={`text-white font-light ${showDescription ? 'text-xl mb-3' : 'text-lg'}`}>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/navigation/header";
+import SmoothScrollProvider from "@/components/layout/navigation/ReactLenis";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,10 +31,10 @@ export default function RootLayout({
       >
         {/* Navigation with dropdown support */}
         <Navbar />
-        
+
         {/* Main content area */}
         <main className="relative">
-          {children}
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
         </main>
       </body>
     </html>

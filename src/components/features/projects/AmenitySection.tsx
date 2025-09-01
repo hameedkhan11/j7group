@@ -1,135 +1,102 @@
+// components/AmenitiesSection.tsx
 "use client";
 import React, { useState } from 'react';
 import { CldImage } from 'next-cloudinary';
-import { 
-  MdMeetingRoom, 
-  MdPool, 
-  MdBeachAccess,
-  MdSpa,
-  MdRestaurant,
-  MdLocalParking,
-  MdSecurity,
-  MdBusinessCenter,
-  MdRoofing,
-  MdChildCare,
-  MdLocalLaundryService
-} from 'react-icons/md';
-import { FaDumbbell, FaConciergeBell, FaWifi } from 'react-icons/fa';
-import { GiWaves } from 'react-icons/gi';
 
 interface Amenity {
   id: string;
   name: string;
-  icon: React.ReactNode;
   imagePublicId: string;
   title: string;
   description: string;
 }
 
-interface AmenitiesSectionProps {
-  className?: string;
-}
-
-const AmenitiesSection: React.FC<AmenitiesSectionProps> = ({ 
-  className = ''
-}) => {
+const AmenitiesSection: React.FC = () => {
   const amenities: Amenity[] = [
     {
       id: 'lobby',
-      name: 'Lobby',
-      icon: <MdMeetingRoom className="w-5 h-5" />,
-      imagePublicId: 'imgi_14_67c7bc857d870bdadf59bf7f_5_axfszh',
+      name: 'Sky Lobby',
+      imagePublicId: 'Sky_Lobby_aybbhv',
       title: 'Grand Lobby Experience',
       description: 'Welcome to an impressive double-height lobby featuring premium marble finishes, contemporary seating areas, and sophisticated lighting.'
     },
     {
       id: 'fitness',
       name: 'Fitness Centre',
-      icon: <FaDumbbell className="w-5 h-5" />,
-      imagePublicId: 'imgi_14_67c7bc857d870bdadf59bf7f_5_axfszh',
+      imagePublicId: 'Yoga_Centre_ajj1vi',
       title: 'State-of-the-Art Fitness Center',
       description: 'A fully equipped fitness center with the latest cardio and strength training equipment, personal training areas, and panoramic views.'
     },
     {
-      id: 'pool',
-      name: 'Pool',
-      icon: <MdPool className="w-5 h-5" />,
-      imagePublicId: 'imgi_14_67c7bc857d870bdadf59bf7f_5_axfszh',
-      title: 'Infinity Pool Paradise',
-      description: 'Dive into luxury with our spectacular infinity pool that seems to merge with the Arabian Gulf horizon.'
+      id: 'rooftop',
+      name: 'Rooftop Restaurant',
+      imagePublicId: 'Rooftop_Restaurant_so4cas',
+      title: 'Rooftop Dining Experience',
+      description: 'Enjoy exquisite dining with panoramic city views and premium culinary offerings.'
     },
     {
-      id: 'beach',
-      name: 'Beach Access',
-      icon: <GiWaves className="w-5 h-5" />,
-      imagePublicId: 'imgi_14_67c7bc857d870bdadf59bf7f_5_axfszh',
-      title: 'Private Beach Access',
-      description: 'Enjoy direct access to pristine sandy beaches with crystal-clear waters and dedicated beach service.'
+      id: 'pool',
+      name: 'Indoor Swimming Pool',
+      imagePublicId: 'Indoor_Swiming_Pool_kmbf0h',
+      title: 'Indoor Pool Paradise',
+      description: 'Temperature-controlled indoor swimming pool with luxurious amenities and relaxation areas.'
     },
     {
       id: 'spa',
       name: 'Spa & Wellness',
-      icon: <MdSpa className="w-5 h-5" />,
-      imagePublicId: 'imgi_14_67c7bc857d870bdadf59bf7f_5_axfszh',
+      imagePublicId: 'Sauna_Spa_dmq8rr',
       title: 'Luxury Spa & Wellness Center',
       description: 'Indulge in rejuvenating treatments at our world-class spa facility with massage therapy rooms and relaxation areas.'
     },
     {
-      id: 'restaurant',
-      name: 'Restaurant',
-      icon: <MdRestaurant className="w-5 h-5" />,
-      imagePublicId: 'imgi_14_67c7bc857d870bdadf59bf7f_5_axfszh',
-      title: 'Fine Dining Restaurant',
-      description: 'Experience culinary excellence featuring international cuisine with panoramic views and professional service.'
+      id: 'lounge',
+      name: 'Executive Lounge',
+      imagePublicId: 'Executive_Lounge_if9xsn',
+      title: 'Premium Executive Lounge',
+      description: 'Sophisticated lounge space designed for business meetings and exclusive gatherings.'
     },
     {
       id: 'business',
-      name: 'Business Centre',
-      icon: <MdBusinessCenter className="w-5 h-5" />,
-      imagePublicId: 'imgi_14_67c7bc857d870bdadf59bf7f_5_axfszh',
-      title: 'Executive Business Center',
+      name: 'Business Lounge',
+      imagePublicId: 'Business_Lounge_qgwtal',
+      title: 'Professional Business Center',
       description: 'A sophisticated workspace with high-speed internet, private meeting rooms, and premium office amenities.'
     },
     {
-      id: 'concierge',
-      name: 'Concierge',
-      icon: <FaConciergeBell className="w-5 h-5" />,
-      imagePublicId: 'imgi_19_67bfeae088cadc030cc65ff8_Beach_Vista_2_p6owd4',
-      title: 'Premium Concierge Services',
-      description: 'Experience personalized luxury with our dedicated concierge team for all your lifestyle needs.'
-    },
-    {
-      id: 'parking',
-      name: 'Parking',
-      icon: <MdLocalParking className="w-5 h-5" />,
-      imagePublicId: 'imgi_14_67c7bc857d870bdadf59bf7f_5_axfszh',
-      title: 'Secure Parking Facility',
-      description: 'Multi-level secure parking with valet services and electric vehicle charging stations.'
-    },
-    {
-      id: 'security',
-      name: 'Security',
-      icon: <MdSecurity className="w-5 h-5" />,
-      imagePublicId: 'imgi_14_67c7bc857d870bdadf59bf7f_5_axfszh',
-      title: '24/7 Security Services',
-      description: 'Round-the-clock security with trained personnel and advanced surveillance systems.'
-    },
-    {
       id: 'gym',
-      name: 'Gym',
-      icon: <FaDumbbell className="w-5 h-5" />,
-      imagePublicId: 'imgi_14_67c7bc857d870bdadf59bf7f_5_axfszh',
-      title: 'State-of-the-Art Gym',
-      description: 'A fully equipped gym with the latest cardio and strength training equipment, personal training areas, and panoramic views.'
+      name: 'Gymnasium',
+      imagePublicId: 'Gymnesium_jpks5k',
+      title: 'Full-Service Gymnasium',
+      description: 'Complete gymnasium facilities with professional-grade equipment and personal training services.'
     },
-  {
-    id: "Amenity 10",
-    name: "Amenity 10",
-    icon: <FaDumbbell className="w-5 h-5" />,
-    imagePublicId: "imgi_14_67c7bc857d870bdadf59bf7f_5_axfszh",
-    title: "State-of-the-Art Gym",
-    description: "A fully equipped gym with the latest cardio and strength training equipment, personal training areas, and panoramic views."
-  }
+    {
+      id: 'coworking',
+      name: 'Co-working Space',
+      imagePublicId: 'Co-Working_Spaces_x2rz4t',
+      title: 'Modern Co-working Space',
+      description: 'Flexible co-working environment with modern amenities and collaborative spaces.'
+    },
+    {
+      id: 'banquet',
+      name: 'Banquet Hall',
+      imagePublicId: 'Banquet_Hall_rk47z6',
+      title: 'Elegant Banquet Hall',
+      description: 'Spacious banquet facilities perfect for events, celebrations, and corporate functions.'
+    },
+    {
+      id: 'airline',
+      name: 'Airline Lounge',
+      imagePublicId: 'Airline_Crew_Lounge_mbpkqt',
+      title: 'Premium Airline Lounge',
+      description: 'Exclusive lounge facilities designed for airline crew and VIP guests.'
+    },
+    {
+      id: 'amenity10',
+      name: 'Premium Suite',
+      imagePublicId: 'imgi_14_67c7bc857d870bdadf59bf7f_5_axfszh',
+      title: 'Luxury Premium Suite',
+      description: 'Exceptional suite accommodations with premium amenities and stunning views.'
+    }
   ];
 
   const [activeAmenity, setActiveAmenity] = useState<Amenity>(amenities[0]);
@@ -139,58 +106,64 @@ const AmenitiesSection: React.FC<AmenitiesSectionProps> = ({
   };
 
   return (
-    <section className={`bg-[#F4EFE6] ${className} pt-12`}>
-      <div className="grid lg:grid-cols-2 min-h-screen">
-        {/* Left Side - Fixed Height Image */}
+    <section className="bg-[#51301F] min-h-screen ">
+      <div className="grid lg:grid-cols-2 min-h-screen px-12 py-20">
+        {/* Left Side - Image with proper dimensions */}
         <div className="relative h-[60vh] lg:h-screen">
           <CldImage
             src={activeAmenity.imagePublicId}
-            alt={`${activeAmenity.name}`}
-            fill
-            className="object-cover"
+            alt={activeAmenity.title}
+            width={1400}
+            height={822}
+            className="w-full h-full object-cover"
             priority
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            quality={90}
+            quality={100}
           />
         </div>
 
-        {/* Right Side - Clean Content */}
-        <div className="flex flex-col justify-center px-8 lg:px-16">
+        {/* Right Side - Content */}
+        <div className="flex flex-col justify-center px-8 lg:px-16 text-white">
           <div className="max-w-xl">
-            {/* Simple Heading */}
-            <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-8 tracking-wide">
-              Amenities
+            {/* Amenities Title */}
+            <h2 className="text-4xl lg:text-5xl font-light mb-8 tracking-wide">
+              Premium Amenities
             </h2>
 
             {/* Description */}
-            <p className=" text-base leading-relaxed mb-6 font-light">
-              At the heart of the Beach Residences lies an exquisite blend of amenities designed 
-              to cater to the most discerning tastes. From opulent infinity pools and beach access 
-              to a state-of-the-art fitness center and spa, elegant communal spaces and a 
-              sophisticated clubhouse, every aspect of the Beach Residences at Al Marjan Island 
-              has been meticulously crafted making it a sanctuary of luxury and comfort.
+            <p className="text-base leading-relaxed mb-12 font-light opacity-90">
+              At the heart of J7 Group properties lies an exquisite blend of amenities designed 
+              to cater to the most discerning tastes. From opulent facilities and modern conveniences 
+              to sophisticated spaces and premium services, every aspect has been meticulously 
+              crafted making it a sanctuary of luxury and comfort.
             </p>
 
-            {/* Clean Amenities Grid */}
-            <div className="grid grid-cols-3 gap-4">
+            {/* Amenities Grid */}
+            <div className="grid grid-cols-3 gap-3">
               {amenities.map((amenity) => (
                 <button
                   key={amenity.id}
                   onClick={() => handleAmenityClick(amenity)}
                   className={`
-                    px-6 py-4 text-left transition-all duration-300 focus:outline-none
+                    px-4 py-3 text-left transition-all duration-300 focus:outline-none border border-white/20
                     ${activeAmenity.id === amenity.id
-                      ? 'bg-gray-800 text-white' 
-                      : 'bg-white text-gray-700 hover:bg-gray-100'
+                      ? 'bg-white text-stone-800' 
+                      : 'bg-transparent text-white hover:bg-white/10'
                     }
                   `}
-                  aria-label={`View ${amenity.name} details`}
                 >
-                  <span className="text-sm lg:text-base font-light">
+                  <span className="text-sm font-sans">
                     {amenity.name}
                   </span>
                 </button>
               ))}
+            </div>
+
+            {/* Active Amenity Details */}
+            <div className="mt-8 p-6 border border-white/20 bg-white/5 backdrop-blur-sm">
+              <h3 className="text-xl font-medium mb-3">{activeAmenity.title}</h3>
+              <p className="text-sm leading-relaxed opacity-90">
+                {activeAmenity.description}
+              </p>
             </div>
           </div>
         </div>

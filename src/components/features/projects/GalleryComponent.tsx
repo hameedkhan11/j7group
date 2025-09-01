@@ -13,7 +13,7 @@ interface GalleryImage {
   type: 'exterior' | 'interior';
 }
 
-const BeachVistaComponent = () => {
+const GalleryComponent = () => {
   const [activeView, setActiveView] = useState<ViewType>('EXTERIOR');
   const [showFloorPlan, setShowFloorPlan] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
@@ -145,4 +145,4 @@ const BeachVistaComponent = () => {
   );
 };
 
-export default BeachVistaComponent;
+export default GalleryComponent;

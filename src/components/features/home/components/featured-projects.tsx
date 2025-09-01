@@ -64,11 +64,11 @@ const PropertySection: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#ECE4D9]">
+    <section className="relative min-h-screen overflow-hidden bg-[#51301F]">
       <div className="relative z-10 container mx-auto px-4 md:px-16 py-20">
         {/* Header */}
         <div className="mb-12">
-          <h2 className="text-4xl md:text-5xl font-light text-gray-900">
+          <h2 className="text-4xl md:text-5xl font-light text-white">
             Featured Properties
           </h2>
         </div>
